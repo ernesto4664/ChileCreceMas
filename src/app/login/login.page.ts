@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { ApiService } from '../api.service';
 import { AlertController } from '@ionic/angular';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-login',
@@ -15,7 +16,8 @@ export class LoginPage {
   constructor(
     private router: Router,
     private apiService: ApiService,
-    private alertController: AlertController
+    private alertController: AlertController,
+    private authService: AuthService
   ) {}
 
   async presentAlert(header: string, message: string) {
@@ -38,7 +40,7 @@ export class LoginPage {
         console.log('Inicio de sesión exitoso', response);
         this.router.navigate(['/home']);
       },
-      async (error) => {
+      async (error: any) => {
         console.error('Error al iniciar sesión:', error);
         let message = 'Error en la API; por favor, intenta nuevamente más tarde.';
   
@@ -50,6 +52,26 @@ export class LoginPage {
         await this.presentAlert('Error de Inicio de Sesión', message);
       }
     );
+  }
+
+  async loginWithGoogle() {
+    try {
+      await this.authService.loginWithGoogle();
+      this.router.navigate(['/home']);
+    } catch (error: any) {
+      console.error('Error al iniciar sesión con Google:', error);
+      this.presentAlert('Error al iniciar sesión con Google', error.message || 'Error desconocido');
+    }
+  }
+
+  async loginWithFacebook() {
+    try {
+      await this.authService.loginWithFacebook();
+      this.router.navigate(['/home']);
+    } catch (error: any) {
+      console.error('Error al iniciar sesión con Facebook:', error);
+      this.presentAlert('Error al iniciar sesión con Facebook', error.message || 'Error desconocido');
+    }
   }
 
   navigateToForgotPassword() {
