@@ -1,0 +1,20 @@
+ion-content {
+    --background: #9D6BE1;
+    position: relative;
+    overflow: hidden; /* Ensure the wave is contained within the content */
+  }
+  
+  .welcome-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Ensure the container takes full height of the viewport */
+    position: relative;
+    z-index: 1;
+  }
+  
+  .splash-image {
+    max-width: 80%;
+    height: auto;
+  }
+  

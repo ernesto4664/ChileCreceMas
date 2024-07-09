@@ -1,0 +1,7 @@
+{
+  "name": "ChileCreceMas",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
