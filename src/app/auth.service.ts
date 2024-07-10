@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Platform } from '@ionic/angular';
+import { Router } from '@angular/router'; // Importa Router
 import { GoogleAuth } from '@codetrix-studio/capacitor-google-auth';
 import { FacebookLogin, FacebookLoginResponse } from '@capacitor-community/facebook-login';
 
@@ -14,7 +15,8 @@ export class AuthService {
 
   constructor(
     private http: HttpClient,
-    private platform: Platform
+    private platform: Platform,
+    private router: Router // Inyecta Router
   ) {}
 
   login(token: string) {
@@ -25,6 +27,7 @@ export class AuthService {
   logout() {
     localStorage.removeItem('token');
     this.loggedIn.next(false);
+    this.router.navigate(['/login'], { replaceUrl: true }); // Redirige y limpia el historial
   }
 
   isLoggedIn(): Observable<boolean> {

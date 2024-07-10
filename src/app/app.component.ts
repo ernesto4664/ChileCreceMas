@@ -133,7 +133,6 @@ export class AppComponent implements OnInit {
   // Método para cerrar sesión
   logout() {
     this.authService.logout();
-    this.router.navigate(['/login']);
     this.showMenu = false;
   }
 

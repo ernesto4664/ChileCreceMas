@@ -21,8 +21,8 @@
         <p>Fecha de Nacimiento: {{ member.fecha_nacimiento }}</p>
         <p *ngIf="member.semanas_embarazo">Semanas de Embarazo: {{ member.semanas_embarazo }}</p>
       </ion-label>
-      <ion-button (click)="deleteFamilyMember(member.id)" color="danger">Eliminar</ion-button>
-      <ion-button (click)="editFamilyMember(member)" color="primary">Editar</ion-button>
+      <ion-button class="funtion" (click)="deleteFamilyMember(member.id)" color="danger">Eliminar</ion-button>
+      <ion-button class="funtion" (click)="editFamilyMember(member)" color="primary">Editar</ion-button>
     </ion-item>
   </ion-list>
 
@@ -34,7 +34,7 @@
     </div>
   </div>
 
-  <form [formGroup]="familyForm" (ngSubmit)="addOrUpdateFamilyMember()">
+  <form [formGroup]="familyForm" (ngSubmit)="addOrUpdateFamilyMember()" class="form-styled">
     <ion-item>
       <ion-label position="floating">Nombres</ion-label>
       <ion-input formControlName="nombres" type="text"></ion-input>
@@ -67,7 +67,7 @@
       <ion-label position="floating">Parentesco</ion-label>
       <ion-input formControlName="parentesco" type="text"></ion-input>
     </ion-item>
-    <ion-button type="submit" expand="full" [disabled]="familyForm.invalid">{{ editing ? 'Actualizar' : 'Añadir' }}</ion-button>
-    <ion-button *ngIf="editing" expand="full" (click)="cancelEdit()">Cancelar</ion-button>
+    <ion-button class="final-funtion" type="submit" expand="full" [disabled]="familyForm.invalid">{{ editing ? 'Actualizar' : 'Añadir' }}</ion-button>
+    <ion-button class="final-funtion" *ngIf="editing" expand="full" (click)="cancelEdit()">Cancelar</ion-button>
   </form>
 </ion-content>

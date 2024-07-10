@@ -4,3 +4,32 @@
     background-color: #9D6BE1;
     color: #FFFFFF;
 }
+
+.form-styled {
+    ion-item {
+        --background: #B47FF8;
+        --border-radius: 10px;
+        margin: 5px;
+
+      ion-input,
+      ion-label {
+        color: #FFFFFF;
+      }
+      
+      ion-select,
+      ion-datetime {
+        --padding-start: 10px;
+    
+      }
+    }
+  }
+
+  .final-funtion{
+    --background: #B47FF8;
+    --border-radius: 100px;
+  }
+
+  .final-funtion:hover {
+    --background: #3EDAE6;
+    --color: #FFFFFF;
+  }
