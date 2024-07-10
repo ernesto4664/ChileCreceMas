@@ -5,7 +5,7 @@ import { Platform } from '@ionic/angular';
 import { StatusBar, Style } from '@capacitor/status-bar';
 import { SplashScreen } from '@capacitor/splash-screen';
 import { filter } from 'rxjs/operators';
-import { AuthService } from './auth.service';
+import { AuthService } from './auth.service'; // Importa AuthService
 
 @Component({
   selector: 'app-root',
@@ -119,6 +119,11 @@ export class AppComponent implements OnInit {
   navigateTomifamilia() {
     this.showMenu = false;
     this.router.navigate(['/mifamilia']);
+  }
+
+  navigateToLogin() {
+    this.showMenu = false;
+    this.router.navigate(['/login']);
   }
 
   goBack() {

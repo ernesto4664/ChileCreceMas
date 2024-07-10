@@ -43,8 +43,12 @@
           <ion-label><strong>Mi Familia</strong></ion-label>
         </ion-col>
         <ion-col *ngIf="isLoggedIn" size="12" class="icon-col" (click)="logout()">
-          <img src="assets/img/logout.png" alt="Cerrar Sesión" width="40px" height="27px">
+          <img src="assets/img/logout.png" alt="Cerrar Sesión" width="35px" height="35px">
           <ion-label><strong>Cerrar Sesión</strong></ion-label>
+        </ion-col>
+        <ion-col *ngIf="!isLoggedIn" size="12" class="icon-col" (click)="navigateToLogin()">
+          <img src="assets/img/logout.png" alt="Iniciar Sesión" width="35px" height="35px">
+          <ion-label><strong>Iniciar Sesión</strong></ion-label>
         </ion-col>
       </ion-row>
     </ion-grid>

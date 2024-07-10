@@ -43,7 +43,7 @@ export class AuthService {
       this.handleAuthResponse(response);
     } catch (error: any) {
       console.error('Error al iniciar sesión con Google', error);
-      throw new Error('Error al iniciar sesión con Google');
+      throw new Error('Error al iniciar sesión con Google: ' + error.message);
     }
   }
 
@@ -54,10 +54,12 @@ export class AuthService {
       if (res.accessToken) {
         const response = await this.http.post(`${this.baseUrl}/login/facebook`, { accessToken: res.accessToken.token }).toPromise();
         this.handleAuthResponse(response);
+      } else {
+        throw new Error('Error al obtener el token de acceso de Facebook');
       }
     } catch (error: any) {
       console.error('Error al iniciar sesión con Facebook', error);
-      throw new Error('Error al iniciar sesión con Facebook');
+      throw new Error('Error al iniciar sesión con Facebook: ' + error.message);
     }
   }
 
