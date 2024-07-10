@@ -13,6 +13,7 @@ export class MifamiliaPage implements OnInit {
   familyForm: FormGroup;
   editing = false;
   editingMemberId: number | null = null;
+  hasPregnantMember = false;
 
   constructor(
     private apiService: ApiService,
@@ -38,6 +39,7 @@ export class MifamiliaPage implements OnInit {
     this.apiService.getFamilyMembers().subscribe(
       data => {
         this.familyMembers = data;
+        this.hasPregnantMember = this.familyMembers.some(member => member.semanas_embarazo > 0);
       },
       error => {
         console.error('Error al cargar miembros de la familia:', error);

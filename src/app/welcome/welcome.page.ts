@@ -12,7 +12,7 @@ export class WelcomePage implements OnInit {
 
   ngOnInit() {
     setTimeout(() => {
-      this.router.navigate(['/choice']);
+      this.router.navigate(['/home-guest']);
     }, 5000); // 5000 ms = 5 seconds
   }
 }

@@ -59,7 +59,7 @@
       <ion-label position="floating">Fecha de Nacimiento</ion-label>
       <ion-datetime formControlName="fecha_nacimiento" displayFormat="YYYY-MM-DD"></ion-datetime>
     </ion-item>
-    <ion-item>
+    <ion-item *ngIf="!hasPregnantMember">
       <ion-label position="floating">Semanas de Embarazo</ion-label>
       <ion-input formControlName="semanas_embarazo" type="number"></ion-input>
     </ion-item>
