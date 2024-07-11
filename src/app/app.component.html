@@ -20,9 +20,11 @@
   <div *ngIf="showMenu" class="menu-overlay" (click)="toggleMenu()"></div>
   <div class="menu-options" [class.show]="showMenu">
     <div class="menu-title-container">
-      <ion-col size="12" class="icon-col" style="background-color: #6725c1; font-weight: 500;">
-        <ion-label>App ChileCreceMas</ion-label>
-      </ion-col>
+      <div class="container logo-min" style="text-align: center;">
+        <div class="row">
+          <img src="assets/img/logo-principal.png" alt="Bienvenido a nuestra aplicación">
+        </div>
+      </div>
     </div>
     <ion-grid>
       <ion-row>
@@ -38,7 +40,7 @@
           <img src="assets/img/informacion.png" alt="Informate" width="34px" height="34px">
           <ion-label>Informate</ion-label>
         </ion-col>
-        <ion-col *ngIf="isLoggedIn" style="margin-top: 10rem;" size="12" class="icon-col" (click)="navigateTomifamilia()">
+        <ion-col *ngIf="isLoggedIn" size="12" class="icon-col" (click)="navigateTomifamilia()">
           <img src="assets/img/familia.png" alt="Familia" width="40px" height="27px">
           <ion-label><strong>Mi Familia</strong></ion-label>
         </ion-col>
@@ -52,10 +54,5 @@
         </ion-col>
       </ion-row>
     </ion-grid>
-    <div class="container logo-min" style="text-align: center;">
-      <div class="row">
-        <img src="assets/img/logo-principal.png" alt="Bienvenido a nuestra aplicación">
-      </div>
-    </div>
   </div>
 </ion-app>

@@ -26,48 +26,55 @@
     </ion-item>
   </ion-list>
 
-  <div class="container division" style="padding: 2px 15px;">
-    <div class="row">
-      <div class="ion-col">
-        <p>Si deseas agregar algun miembro al grupo familiar llena el formulario a continuación:</p>
+  <ion-accordion-group>
+    <div class="container division">
+      <div class="row">
+        <div class="ion-col">
+          <ion-accordion value="form">
+            <ion-item slot="header">
+              <ion-label>Si deseas agregar algún miembro al grupo familiar haz click aquí</ion-label>
+            </ion-item>
+            <div slot="content">
+              <form [formGroup]="familyForm" (ngSubmit)="addOrUpdateFamilyMember()" class="form-styled">
+                <ion-item>
+                  <ion-label position="floating">Nombres</ion-label>
+                  <ion-input formControlName="nombres" type="text"></ion-input>
+                </ion-item>
+                <ion-item>
+                  <ion-label position="floating">Apellidos</ion-label>
+                  <ion-input formControlName="apellidos" type="text"></ion-input>
+                </ion-item>
+                <ion-item>
+                  <ion-label position="floating">Edad</ion-label>
+                  <ion-input formControlName="edad" type="number"></ion-input>
+                </ion-item>
+                <ion-item>
+                  <ion-label position="floating">Sexo</ion-label>
+                  <ion-select formControlName="sexo">
+                    <ion-select-option value="M">Masculino</ion-select-option>
+                    <ion-select-option value="F">Femenino</ion-select-option>
+                    <ion-select-option value="O">Otro</ion-select-option>
+                  </ion-select>
+                </ion-item>
+                <ion-item>
+                  <ion-label position="floating">Fecha de Nacimiento</ion-label>
+                  <ion-datetime formControlName="fecha_nacimiento" displayFormat="YYYY-MM-DD"></ion-datetime>
+                </ion-item>
+                <ion-item *ngIf="!hasPregnantMember">
+                  <ion-label position="floating">Semanas de Embarazo</ion-label>
+                  <ion-input formControlName="semanas_embarazo" type="number"></ion-input>
+                </ion-item>
+                <ion-item>
+                  <ion-label position="floating">Parentesco</ion-label>
+                  <ion-input formControlName="parentesco" type="text"></ion-input>
+                </ion-item>
+                <ion-button class="final-funtion" type="submit" expand="full" [disabled]="familyForm.invalid">{{ editing ? 'Actualizar' : 'Añadir' }}</ion-button>
+                <ion-button class="final-funtion" *ngIf="editing" expand="full" (click)="cancelEdit()">Cancelar</ion-button>
+              </form>
+            </div>
+          </ion-accordion>
+        </div>
       </div>
     </div>
-  </div>
-
-  <form [formGroup]="familyForm" (ngSubmit)="addOrUpdateFamilyMember()" class="form-styled">
-    <ion-item>
-      <ion-label position="floating">Nombres</ion-label>
-      <ion-input formControlName="nombres" type="text"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label position="floating">Apellidos</ion-label>
-      <ion-input formControlName="apellidos" type="text"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label position="floating">Edad</ion-label>
-      <ion-input formControlName="edad" type="number"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label position="floating">Sexo</ion-label>
-      <ion-select formControlName="sexo">
-        <ion-select-option value="M">Masculino</ion-select-option>
-        <ion-select-option value="F">Femenino</ion-select-option>
-        <ion-select-option value="O">Otro</ion-select-option>
-      </ion-select>
-    </ion-item>
-    <ion-item>
-      <ion-label position="floating">Fecha de Nacimiento</ion-label>
-      <ion-datetime formControlName="fecha_nacimiento" displayFormat="YYYY-MM-DD"></ion-datetime>
-    </ion-item>
-    <ion-item *ngIf="!hasPregnantMember">
-      <ion-label position="floating">Semanas de Embarazo</ion-label>
-      <ion-input formControlName="semanas_embarazo" type="number"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label position="floating">Parentesco</ion-label>
-      <ion-input formControlName="parentesco" type="text"></ion-input>
-    </ion-item>
-    <ion-button class="final-funtion" type="submit" expand="full" [disabled]="familyForm.invalid">{{ editing ? 'Actualizar' : 'Añadir' }}</ion-button>
-    <ion-button class="final-funtion" *ngIf="editing" expand="full" (click)="cancelEdit()">Cancelar</ion-button>
-  </form>
+  </ion-accordion-group>
 </ion-content>
