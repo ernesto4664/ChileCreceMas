@@ -77,6 +77,10 @@ export class AppComponent implements OnInit {
       this.showHeader = true;
       this.pageTitle = 'Home';
       this.showBackButton = true;
+    } else if (url.includes('noticia')) { 
+      this.showHeader = true;
+      this.pageTitle = 'Noticia';
+      this.showBackButton = true;
     } else if (url.includes('contact-us')) {
       this.showHeader = true;
       this.pageTitle = 'Contacto';

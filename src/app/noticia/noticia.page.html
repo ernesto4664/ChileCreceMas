@@ -1,0 +1,39 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="goBack()">
+        <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>{{ noticia?.titulo }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-button (click)="goBack()">
+          <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+      <ion-title size="large">{{ noticia?.titulo }}</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-card *ngIf="noticia">
+    <img [src]="getFullImageUrl(noticia.imagen)" *ngIf="noticia.imagen" />
+    <ion-card-header>
+      <ion-card-title>{{ noticia.titulo }}</ion-card-title>
+      <ion-card-subtitle>{{ noticia.fecha_hora | date: 'medium' }}</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <p>{{ noticia.descripcion }}</p>
+      <div *ngIf="noticia.tags && noticia.tags.length">
+        <ion-chip *ngFor="let tag of noticia.tags">
+          <ion-label>{{ tag.nombre }}</ion-label>
+        </ion-chip>
+      </div>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

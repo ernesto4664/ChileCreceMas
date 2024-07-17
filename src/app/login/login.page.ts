@@ -77,4 +77,9 @@ export class LoginPage {
   navigateToForgotPassword() {
     // Implementa la navegación para "¿Olvidaste tu contraseña?" si es necesario
   }
+
+  navigateToRegister() {
+    this.router.navigate(['/register']);
+  }
+  
 }

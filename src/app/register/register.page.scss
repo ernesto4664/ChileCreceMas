@@ -1,6 +1,11 @@
 
+h1{
+  font-weight: 700;
+  font-size: 30px;
+  color: #656565;
+}
+
 ion-content {
-  --background: #9D6BE1;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -17,8 +22,8 @@ ion-content {
 }
 
 ion-item {
-    --color: #FFFFFF;
-    --background: #B47FF8;
+    --color: #656565;
+    --background: #EEEEEE;
     --border-radius: 10px;
     margin-bottom: 15px;
   }
@@ -38,7 +43,7 @@ ion-item {
   }
   
   ion-button {
-    --background: #B47FF8;
+    --background: #3EDAE6;
     --border-radius: 100px;
   }
 

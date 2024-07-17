@@ -1,12 +1,69 @@
+h1{
+  font-weight: 700;
+  font-size: 30px;
+  color: #656565;
+}
+
+p{
+  font-weight: 400;
+  font-size: 16px;
+  color: #656565;
+}
+.myfamily {
+  --ion-item-background: transparent;
+  display: block;
+  border-bottom: 1px solid #656565;
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+}
+
+ion-item{
+  --ion-item-background: #EEEEEE;
+  margin-bottom: 10px;
+}
+
+ion-label {
+  display: block;
+  width: 100%;
+}
+
+.button-group {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.mibtn {
+  flex: 1;
+  margin: 0 5px;
+  color: #656565; /* Cambia esto al color de texto que desees */
+  --border: 1px solid #656565;
+  --border-radius: 100px; /* Cambia esto para redondear los bordes */
+  --background: #FFFFFF; /* Asegúrate de que el color de fondo sea consistente */
+}
+
+.mibtn:hover {
+  --background: #3EDAE6;
+  color: #fff; 
+}
+
+.form-content {
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  max-height: calc(100vh - 200px); // Adjust as needed to ensure the content fits within the screen
+  padding-bottom: 20px;
+}
+
 .form-styled {
     ion-item {
-        --background: #B47FF8;
+        --background: #EEEEEE;
         --border-radius: 10px;
         margin: 5px;
 
       ion-input,
       ion-label {
-        color: #FFFFFF;
+        color: #656565;
       }
       
       ion-select,
@@ -25,10 +82,10 @@
   ion-accordion-group {
     ion-accordion {
       ion-item[slot="header"] {
-        background-color: #007BFF; // Color de fondo deseado
+        background-color: #3EDAE6; // Color de fondo deseado
         color: white; // Color de la fuente
         width: 100%;
-        --background: #007BFF; // Fondo del ion-item
+        --background: #3EDAE6; // Fondo del ion-item
         --color: white; // Color de la fuente del ion-item
       }
     }

@@ -35,6 +35,7 @@ const routes: Routes = [
     path: 'mifamilia',
     loadChildren: () => import('./mifamilia/mifamilia.module').then( m => m.MifamiliaPageModule)
   },
+  { path: 'noticia/:id', loadChildren: () => import('./noticia/noticia.module').then(m => m.NoticiaPageModule) },
   {
     path: '**',
     redirectTo: 'welcome',

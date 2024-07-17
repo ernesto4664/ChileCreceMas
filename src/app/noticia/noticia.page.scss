@@ -1,0 +1,29 @@
+ion-card {
+    img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+    }
+  
+    ion-card-title {
+      font-size: 1.8rem;
+      font-weight: bold;
+      margin-top: 10px;
+    }
+  
+    ion-card-content {
+      font-size: 1rem;
+      line-height: 1.5;
+    }
+  
+    .date-time {
+      margin-top: 20px;
+      font-style: italic;
+      color: gray;
+    }
+  
+    ion-chip {
+      margin-top: 10px;
+    }
+  }
+  

@@ -1,11 +1,8 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-
 import { IonicModule } from '@ionic/angular';
-
 import { GuestHomePageRoutingModule } from './guest-home-routing.module';
-
 import { GuestHomePage } from './guest-home.page';
 
 @NgModule({
@@ -15,6 +12,7 @@ import { GuestHomePage } from './guest-home.page';
     IonicModule,
     GuestHomePageRoutingModule
   ],
-  declarations: [GuestHomePage]
+  declarations: [GuestHomePage],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]  // Agrega esta línea
 })
 export class GuestHomePageModule {}

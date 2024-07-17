@@ -1,0 +1,29 @@
+h1{
+    font-Weight: 700;
+    font-Size: 30px;
+    color: #656565;
+}
+.swiper-container {
+    width: 360px;
+    height: 411px;
+    margin: auto;
+    border-radius: 10px, 10px, 0px, 0px;
+  
+    .swiper-slide {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  
+    .noticia-image {
+      width: 360px;
+      height: 260px;
+      object-fit: cover;
+    }
+  
+    ion-card {
+      width: 100%;
+      max-width: 389px;
+    }
+  }
+  
