@@ -162,4 +162,12 @@ export class ApiService {
     const url = `${this.baseUrl}/check-gestante-used/${userId}`;
     return this.http.get<boolean>(url).pipe(catchError(this.handleApiError));
   }
+
+  getNoticiasPaginadas(page: number = 1, limit: number = 10): Observable<any> {
+    const url = `${this.baseUrl}/noticias-paginadas?page=${page}&limit=${limit}`;
+    return this.http.get(url).pipe(
+      map((response: any) => response),
+      catchError(this.handleApiError)
+    );
+  }
 }

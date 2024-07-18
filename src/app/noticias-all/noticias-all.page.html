@@ -1,0 +1,39 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Noticias</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Noticias</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <div class="container">
+    <div class="row">
+      <div class="col" style="padding: 0px 20px;">
+        <h1>Todas las noticias</h1>
+      </div>
+    </div>
+  </div>
+
+  <ion-list>
+    <ion-item *ngFor="let noticia of noticias" class="noticia-item">
+      <ion-thumbnail slot="start">
+        <img [src]="getFullImageUrl(noticia.imagen)" (error)="onImageError($event)" />
+      </ion-thumbnail>
+      <ion-label>
+        <h2>{{ noticia.titulo }}</h2>
+        <p>{{ noticia.fecha_hora | date }}</p>
+        <ion-button fill="clear" (click)="irAlDetalle(noticia.id)">Ir al detalle</ion-button>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
+  <div class="pagination-controls">
+    <ion-button (click)="previousPage()" [disabled]="currentPage === 1">Anterior</ion-button>
+    <ion-button (click)="nextPage()" [disabled]="currentPage === totalPages">Siguiente</ion-button>
+  </div>
+</ion-content>

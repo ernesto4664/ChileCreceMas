@@ -105,9 +105,9 @@ export class AppComponent implements OnInit {
     this.router.navigate(['/electrolineras']);
   }
 
-  navigateTosearch() {
+  navigateTonoticiasall() {
     this.showMenu = false;
-    this.router.navigate(['/first-search']);
+    this.router.navigate(['/noticias-all']);
   }
 
   navigateTocontact() {

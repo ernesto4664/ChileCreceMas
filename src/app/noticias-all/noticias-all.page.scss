@@ -1,0 +1,57 @@
+h1{
+    font-weight: 700;
+    font-size: 30px;
+    color: #656565;
+}
+
+h2{
+    text-align: left;
+    color: #656565;
+}
+
+ion-item.noticia-item {
+    display: flex;
+    align-items: center;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 15px;
+    padding: 10px;
+  }
+  
+  ion-thumbnail {
+    --border-radius: 10px;
+    overflow: hidden;
+    margin-right: 15px;
+    width: 150px;
+    height: 150px;
+  }
+  
+  ion-thumbnail img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+  }
+  
+  ion-label {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  ion-label h2 {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 0 0 5px 0;
+  }
+  
+  ion-label p {
+    margin: 0;
+  }
+  
+  ion-button {
+    margin-top: 10px;
+    --background: #3EDAE6;
+    --border-radius: 100px;
+    --color: #FFFFFF;
+      
+  }
+  
