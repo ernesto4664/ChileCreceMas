@@ -26,7 +26,13 @@
           </ion-card-header>
           <ion-card-content>
             <p>{{ noticia.descripcion | slice:0:100 }}...</p>
-            <ion-button expand="full" color="primary" (click)="verDetalles(noticia.idnoticia)">Ver detalles</ion-button>
+            <div class="container" style="text-align-last: center;">
+              <div class="row">
+                <div class="col">
+                  <ion-button (click)="verDetalles(noticia.idnoticia)">Ver detalles</ion-button>
+                </div>
+              </div>
+            </div>     
           </ion-card-content>
         </ion-card>
       </swiper-slide>

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../api.service';
+import { Noticia } from '../models/noticia';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-noticias-all',
@@ -10,9 +12,9 @@ export class NoticiasAllPage implements OnInit {
   noticias: any[] = [];
   currentPage = 1;
   totalPages = 0;
-  router: any;
+ 
 
-  constructor(private apiService: ApiService) {}
+  constructor(private apiService: ApiService, private router: Router) {}
 
   ngOnInit() {
     this.loadNoticias();
@@ -54,7 +56,7 @@ export class NoticiasAllPage implements OnInit {
     event.target.src = 'assets/default-image.png';
   }
 
-  irAlDetalle(id: number) {
-    this.router.navigate(['/noticia-detalle', id]);
+  verDetalles(noticiaId: number) {
+    this.router.navigate(['/noticia', noticiaId]);
   }
 }

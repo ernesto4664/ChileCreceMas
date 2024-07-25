@@ -28,17 +28,25 @@
     </div>
     <ion-grid>
       <ion-row>
-        <ion-col size="12" class="icon-col" (click)="navigateToElectrolineras()">
+        <ion-col *ngIf="isLoggedIn" size="12" class="icon-col" (click)="navigateTohome()">
           <img src="assets/img/home.png" alt="Inicio" width="35px" height="28px">
           <ion-label style="margin-top: 8px;">Inicio</ion-label>
         </ion-col>
-        <ion-col size="12" class="icon-col" (click)="navigateTonoticiasall()">
+        <ion-col *ngIf="!isLoggedIn" size="12" class="icon-col" (click)="navigateTohomeguest()">
+          <img src="assets/img/home.png" alt="Inicio" width="35px" height="28px">
+          <ion-label style="margin-top: 8px;">Inicio</ion-label>
+        </ion-col>
+        <ion-col  size="12" class="icon-col" (click)="navigateTonoticiasall()">
           <img src="assets/img/informacion.png" alt="Noticias" width="34px" height="34px">
           <ion-label>Noticias</ion-label>
         </ion-col>
-        <ion-col size="12" class="icon-col" (click)="navigateTocontact()">
-          <img src="assets/img/informacion.png" alt="Informate" width="34px" height="34px">
-          <ion-label>Informate</ion-label>
+        <ion-col *ngIf="isLoggedIn" size="12" class="icon-col" (click)="navigateTobeneficiosuser()">
+          <img src="assets/img/beneficios.png" alt="Beneficios" width="34px" height="34px">
+          <ion-label>Beneficios</ion-label>
+        </ion-col>
+        <ion-col *ngIf="!isLoggedIn" size="12" class="icon-col" (click)="navigateTobeneficiosall()">
+          <img src="assets/img/beneficios.png" alt="Beneficios" width="34px" height="34px">
+          <ion-label>Beneficios</ion-label>
         </ion-col>
         <ion-col *ngIf="isLoggedIn" size="12" class="icon-col" (click)="navigateTomifamilia()">
           <img src="assets/img/familia.png" alt="Familia" width="40px" height="27px">

@@ -41,11 +41,6 @@ const routes: Routes = [
     loadChildren: () => import('./noticias-all/noticias-all.module').then( m => m.NoticiasAllPageModule)
   },
   {
-    path: '**',
-    redirectTo: 'welcome',
-    pathMatch: 'full'
-  },
-  {
     path: 'beneficios-all',
     loadChildren: () => import('./beneficios-all/beneficios-all.module').then( m => m.BeneficiosAllPageModule)
   },
@@ -53,7 +48,11 @@ const routes: Routes = [
     path: 'beneficios-user',
     loadChildren: () => import('./beneficios-user/beneficios-user.module').then( m => m.BeneficiosUserPageModule)
   },
-
+  {
+    path: '**',
+    redirectTo: 'welcome',
+    pathMatch: 'full'
+  },
 ];
 
 @NgModule({

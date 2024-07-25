@@ -100,9 +100,24 @@ export class AppComponent implements OnInit {
     this.showMenu = !this.showMenu;
   }
 
-  navigateToElectrolineras() {
+  navigateTohome() {
     this.showMenu = false;
-    this.router.navigate(['/electrolineras']);
+    this.router.navigate(['/home']);
+  }
+
+  navigateTohomeguest() {
+    this.showMenu = false;
+    this.router.navigate(['/home-guest']);
+  }
+
+  navigateTobeneficiosuser() {
+    this.showMenu = false;
+    this.router.navigate(['/beneficios-user']);
+  }
+
+  navigateTobeneficiosall() {
+    this.showMenu = false;
+    this.router.navigate(['/beneficios-all']);
   }
 
   navigateTonoticiasall() {

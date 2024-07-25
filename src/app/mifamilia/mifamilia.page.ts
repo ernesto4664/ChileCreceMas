@@ -33,7 +33,7 @@ export class MifamiliaPage implements OnInit {
       fecha_nacimiento: ['', Validators.required],
       tipoderegistro_id: [1, Validators.required]
     });
-  
+
     this.ninoForm = this.formBuilder.group({
       tipo_registro: ['nino', Validators.required],
       nombres: ['', Validators.required],
@@ -43,7 +43,7 @@ export class MifamiliaPage implements OnInit {
       parentesco: ['', Validators.required],
       tipoderegistro_id: [2, Validators.required]
     });
-  
+
     this.pgestanteForm = this.formBuilder.group({
       tipo_registro: ['Pgestante', Validators.required],
       nombres: ['', Validators.required],
@@ -128,13 +128,13 @@ export class MifamiliaPage implements OnInit {
   async addOrUpdateFamilyMember(form: FormGroup) {
     if (form.valid) {
       const formData = form.value;
-      
+
       if (this.selectedOption === 1) {
         formData.fecha_nacimiento = this.currentUser.fecha_nacimiento;
       }
-  
+
       formData.usuarioP_id = this.currentUser.id; // Añadir el usuarioP_id
-  
+
       if (this.editing && this.editingMemberId !== null) {
         this.apiService.updateFamilyMember(this.editingMemberId, formData).subscribe(
           () => {
@@ -181,43 +181,83 @@ export class MifamiliaPage implements OnInit {
     }
   }
 
-  async deleteFamilyMember(id: number) {
+  async deleteFamilyMember(member: FamilyMember) {
     const alert = await this.alertController.create({
       header: 'Confirmación',
-      message: '¿Estás seguro de que deseas eliminar este familiar?',
+      message: '¿Estás seguro de que deseas terminar con este proceso? Por favor, selecciona el motivo:',
+      inputs: [
+        {
+          name: 'reason',
+          type: 'radio',
+          label: member.tipoderegistro_id === 2 ? 'Otro motivo' : 'Nacimiento',
+          value: 'nacimiento'
+        },
+        {
+          name: 'reason',
+          type: 'radio',
+          label: 'Otro motivo',
+          value: 'otro'
+        }
+      ],
       buttons: [
         {
           text: 'Cancelar',
-          role: 'cancel',
+          role: 'cancel'
         },
         {
-          text: 'Eliminar',
-          handler: () => {
-            this.apiService.deleteFamilyMember(id).subscribe(
-              () => {
-                this.loadFamilyMembers();
-                this.presentAlert('Éxito', 'Miembro de la familia eliminado satisfactoriamente.');
-              },
-              error => {
-                console.error('Error al eliminar miembro de la familia:', error);
-                this.presentAlert('Error', 'Error al eliminar miembro de la familia: ' + error);
-              }
-            );
-          },
-        },
-      ],
+          text: 'Terminar',
+          handler: async (data) => {
+            if (data === 'nacimiento' && member.tipoderegistro_id !== 2) {
+              this.apiService.deleteFamilyMember(member.id).subscribe(
+                async () => {
+                  await this.presentAlert('Éxito', 'Proceso terminado satisfactoriamente.');
+                  this.loadFamilyMembers();
+                  this.showAddChildAlert();
+                },
+                error => {
+                  console.error('Error al terminar proceso:', error);
+                  this.presentAlert('Error', 'Error al terminar proceso: ' + error);
+                }
+              );
+            } else {
+              this.apiService.deleteFamilyMember(member.id).subscribe(
+                () => {
+                  this.loadFamilyMembers();
+                  this.presentAlert('Éxito', 'Proceso terminado satisfactoriamente.');
+                },
+                error => {
+                  console.error('Error al terminar proceso:', error);
+                  this.presentAlert('Error', 'Error al terminar proceso: ' + error);
+                }
+              );
+            }
+          }
+        }
+      ]
     });
-
     await alert.present();
   }
 
-  cancelEdit() {
-    this.editing = false;
-    this.editingMemberId = null;
-    this.selectedOption = null;
-    this.gestanteForm.reset();
-    this.ninoForm.reset();
-    this.pgestanteForm.reset();
+  async showAddChildAlert() {
+    const alert = await this.alertController.create({
+      header: 'Agregar Niño/a',
+      message: '¿Deseas agregar al niño/a al grupo familiar?',
+      buttons: [
+        {
+          text: 'No',
+          role: 'cancel'
+        },
+        {
+          text: 'Sí',
+          handler: () => {
+            this.selectedOption = 2; // Seleccionar la opción de niño
+            this.ninoForm.reset();
+          }
+        }
+      ]
+    });
+
+    await alert.present();
   }
 
   async presentAlert(header: string, message: string) {

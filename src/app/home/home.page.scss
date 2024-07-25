@@ -3,29 +3,53 @@ h1{
   font-Size: 30px;
   color: #656565;
 }
+/* Estilos generales para el contenedor del slider */
 .swiper-container {
-  width: 360px;
-  height: 411px;
-  margin: auto;
-  border-radius: 10px, 10px, 0px, 0px;
-
-  .swiper-slide {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .noticia-image {
-    width: 360px;
-    height: 260px;
-    object-fit: cover;
-  }
-
-  ion-card {
-    width: 100%;
-    max-width: 389px;
-  }
+width: 100%;
+margin-top: 20px;
 }
-#container a {
-  text-decoration: none;
+
+/* Estilos específicos para los sliders */
+.swiper-slide {
+display: flex;
+justify-content: center;
+align-items: center;
+padding: 10px; /* Ajusta el padding entre sliders */
+}
+
+.mySwiper .swiper-slide {
+width: 90%; /* Ajusta el tamaño del slider */
+
+}
+
+.ion-card {
+width: 100%;
+max-width: 400px; /* Tamaño fijo del card */
+margin: 0 auto; /* Centra los cards */
+}
+
+.noticia-image {
+width: 100%;
+height: auto;
+object-fit: cover;
+}
+
+.ion-card-content {
+text-align: justify;
+font-size: 14px;
+color: #656565;
+}
+
+.ion-card-title {
+font-weight: 500;
+font-size: 18px;
+color: #333;
+}
+
+/* Opcional: Estilos para el botón */
+ion-button {
+--background: #3EDAE6;
+--border-radius: 100px;
+margin-top: 10px;
+
 }

@@ -34,7 +34,7 @@
         </p>
         <p *ngIf="member.semanas_embarazo_id">Semanas de Embarazo: Semana {{ member.semanas_embarazo_id }}</p>
         <div class="button-group">
-          <ion-button class="mibtn" (click)="deleteFamilyMember(member.id)">Terminar proceso</ion-button>
+          <ion-button class="mibtn" (click)="deleteFamilyMember(member)">Terminar proceso</ion-button>
           <ion-button class="mibtn" (click)="editFamilyMember(member)">Editar</ion-button>
         </div>
       </ion-label>
@@ -50,7 +50,7 @@
           <ion-label position="floating">Tipo de Registro</ion-label>
           <ion-select [(ngModel)]="selectedOption" (ionChange)="onTipoRegistroChange($event)">
             <ion-select-option *ngFor="let tipo of tiposDeRegistro" [value]="tipo.id" [disabled]="tipo.nombre === 'gestante' && isGestanteOptionUsed()">
-              {{ tipo.nombre === 'gestante' ? 'Me encuentro en estado de gestación' : tipo.nombre === 'nino' ? 'Quiero registar un niño' : 'Quiero registrar a una persona en estado de gestación' }}
+              {{ tipo.nombre === 'gestante' ? 'Me encuentro en estado de gestación' : tipo.nombre === 'nino' ? 'Quiero registar un niño/a' : 'Quiero registrar a una persona en estado de gestación' }}
             </ion-select-option>
           </ion-select>
         </ion-item>
@@ -81,11 +81,11 @@
         <!-- Formulario para niño -->
         <form *ngIf="selectedOption === 2" [formGroup]="ninoForm" (ngSubmit)="addOrUpdateFamilyMember(ninoForm)">
           <ion-item>
-            <ion-label position="floating">Nombres</ion-label>
+            <ion-label position="floating">Nombres del niño/a</ion-label>
             <ion-input formControlName="nombres" type="text"></ion-input>
           </ion-item>
           <ion-item>
-            <ion-label position="floating">Apellidos</ion-label>
+            <ion-label position="floating">Apellidos del niño/a</ion-label>
             <ion-input formControlName="apellidos" type="text"></ion-input>
           </ion-item>
           <ion-item>
