@@ -1,13 +1,46 @@
+<!-- beneficios-user.page.html -->
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>beneficiosUser</ion-title>
+    <ion-title>Buscador de Beneficios</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">beneficiosUser</ion-title>
+      <ion-title size="large">Buscador de Beneficios</ion-title>
     </ion-toolbar>
   </ion-header>
+
+  <ion-item>
+    <ion-label>Integrantes de la Familia</ion-label>
+    <ion-select placeholder="Seleccione un integrante" (click)="onClickTest()" (ionChange)="onFamilyMemberChange($event)">
+      <ion-select-option *ngFor="let familiar of familiares" [value]="familiar.id">
+        {{ familiar.nombres }} {{ familiar.apellidos }}
+      </ion-select-option>
+    </ion-select>
+  </ion-item>
+
+  <div *ngIf="selectedFamiliar">
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>{{ selectedFamiliar.nombres }} {{ selectedFamiliar.apellidos }}</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <p><strong>Etapa:</strong> {{ selectedFamiliar.etapa || 'No definida' }}</p>
+        <p><strong>Comuna:</strong> {{ selectedFamiliar.comuna || 'No aplica' }}</p>
+        <!--<ion-button >Editar</ion-button>-->
+      </ion-card-content>
+    </ion-card>
+
+    <ion-list>
+      <ion-item *ngFor="let beneficio of beneficios">
+        <ion-label>
+          <h2>{{ beneficio.nombre }}</h2>
+          <p [innerHTML]="beneficio.descripcion"></p>
+        </ion-label>
+        <ion-button >Ir al detalle</ion-button>
+      </ion-item>
+    </ion-list>
+  </div>
 </ion-content>

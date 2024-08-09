@@ -49,12 +49,12 @@
         <ion-item>
           <ion-label position="floating">Tipo de Registro</ion-label>
           <ion-select [(ngModel)]="selectedOption" (ionChange)="onTipoRegistroChange($event)">
-            <ion-select-option *ngFor="let tipo of tiposDeRegistro" [value]="tipo.id" [disabled]="tipo.nombre === 'gestante' && isGestanteOptionUsed()">
-              {{ tipo.nombre === 'gestante' ? 'Me encuentro en estado de gestación' : tipo.nombre === 'nino' ? 'Quiero registar un niño/a' : 'Quiero registrar a una persona en estado de gestación' }}
-            </ion-select-option>
+            <ion-select-option [value]="1" [disabled]="isGestanteOptionUsed">Me encuentro en estado de gestación</ion-select-option>
+            <ion-select-option [value]="2">Quiero registrar un niño/a</ion-select-option>
+            <ion-select-option [value]="3">Quiero registrar a una persona en estado de gestación</ion-select-option>
           </ion-select>
         </ion-item>
-        <!-- Formulario para gestante -->
+        <!-- Formulario para gestante con datos -->
         <form *ngIf="selectedOption === 1" [formGroup]="gestanteForm" (ngSubmit)="addOrUpdateFamilyMember(gestanteForm)">
           <ion-item>
             <ion-label position="floating">Nombres</ion-label>
@@ -109,7 +109,7 @@
         </form>
 
         <!-- Formulario para persona embarazada -->
-        <form *ngIf="selectedOption === 3" [formGroup]="pgestanteForm" (ngSubmit)="addOrUpdateFamilyMember(pgestanteForm)">
+        <form *ngIf="selectedOption === 3" [formGroup]="gestanteForm" (ngSubmit)="addOrUpdateFamilyMember(gestanteForm)">
           <ion-item>
             <ion-label position="floating">Nombres</ion-label>
             <ion-input formControlName="nombres" type="text"></ion-input>
@@ -132,7 +132,7 @@
             <ion-label position="floating">Fecha de Nacimiento</ion-label>
             <ion-datetime formControlName="fecha_nacimiento" displayFormat="YYYY-MM-DD" pickerFormat="YYYY-MM-DD" presentation="date"></ion-datetime>
           </ion-item>
-          <ion-button type="submit" expand="full" [disabled]="pgestanteForm.invalid">Añadir</ion-button>
+          <ion-button type="submit" expand="full" [disabled]="gestanteForm.invalid">Añadir</ion-button>
           <input type="hidden" formControlName="tipoderegistro_id" [value]="selectedOption">
         </form>
       </div>

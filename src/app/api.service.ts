@@ -65,6 +65,14 @@ export class ApiService {
     return this.http.get(url, { headers: headers }).pipe(catchError(this.handleApiError));
   }
 
+  getFamilyMemberBenefits(memberId: number): Observable<any> {
+    const url = `${this.baseUrl}/familiars/${memberId}/benefits`;
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${localStorage.getItem('token')}`,
+    });
+    return this.http.get(url, { headers: headers }).pipe(catchError(this.handleApiError));
+  }
+
   addFamilyMember(member: any): Observable<any> {
     const url = `${this.baseUrl}/familiars`;
     const headers = new HttpHeaders({
@@ -119,17 +127,6 @@ export class ApiService {
     return this.http.get(url).pipe(catchError(this.handleApiError));
   }
 
-  private handleApiError(error: HttpErrorResponse) {
-    let errorMessage = 'Error en la API; por favor, intenta nuevamente más tarde.';
-    if (error.status === 422 && error.error.errors) {
-      const errors = error.error.errors;
-      errorMessage = Object.keys(errors).map(key => errors[key].join(' ')).join(' ');
-    } else if (error.error && error.error.message) {
-      errorMessage = error.error.message;
-    }
-    return throwError(errorMessage);
-  }
-
   getCurrentUser(): Observable<any> {
     const url = `${this.baseUrl}/user`;
     const headers = new HttpHeaders({
@@ -138,14 +135,13 @@ export class ApiService {
     return this.http.get(url, { headers: headers }).pipe(catchError(this.handleApiError));
   }
 
-  // New method to get noticias
   getNoticias(): Observable<Noticia[]> {
     const url = `${this.baseUrl}/noticias`;
     return this.http.get<Noticia[]>(url).pipe(
       map((noticias: Noticia[]) => noticias
         .filter(noticia => noticia.status === 'Publicada')
-        .sort((a, b) => Number(a.privilegio) - Number(b.privilegio)) // Convertir a número
-        .slice(0, 5) // Limitar a las primeras 5
+        .sort((a, b) => Number(a.privilegio) - Number(b.privilegio))
+        .slice(0, 5)
       ),
       catchError(this.handleApiError)
     );
@@ -169,5 +165,16 @@ export class ApiService {
       map((response: any) => response),
       catchError(this.handleApiError)
     );
+  }
+
+  private handleApiError(error: HttpErrorResponse) {
+    let errorMessage = 'Error en la API; por favor, intenta nuevamente más tarde.';
+    if (error.status === 422 && error.error.errors) {
+      const errors = error.error.errors;
+      errorMessage = Object.keys(errors).map(key => errors[key].join(' ')).join(' ');
+    } else if (error.error && error.error.message) {
+      errorMessage = error.error.message;
+    }
+    return throwError(errorMessage);
   }
 }

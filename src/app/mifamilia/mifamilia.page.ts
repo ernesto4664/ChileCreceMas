@@ -14,11 +14,11 @@ export class MifamiliaPage implements OnInit {
   tiposDeRegistro: any[] = [];
   gestanteForm: FormGroup;
   ninoForm: FormGroup;
-  pgestanteForm: FormGroup;
   editing = false;
   editingMemberId: number | null = null;
   selectedOption: number | null = null;
   currentUser: any;
+  isGestanteOptionUsed = false; // Nueva variable para controlar si la opción de gestante ha sido usada
 
   constructor(
     private apiService: ApiService,
@@ -26,32 +26,22 @@ export class MifamiliaPage implements OnInit {
     private alertController: AlertController
   ) {
     this.gestanteForm = this.formBuilder.group({
-      tipo_registro: ['gestante', Validators.required],
+      tipo_registro: ['', Validators.required],
       nombres: ['', Validators.required],
       apellidos: ['', Validators.required],
       semanas_embarazo_id: ['', Validators.required],
       fecha_nacimiento: ['', Validators.required],
-      tipoderegistro_id: [1, Validators.required]
+      tipoderegistro_id: [null, Validators.required]
     });
 
     this.ninoForm = this.formBuilder.group({
-      tipo_registro: ['nino', Validators.required],
+      tipo_registro: ['', Validators.required],
       nombres: ['', Validators.required],
       apellidos: ['', Validators.required],
       sexo: ['', Validators.required],
       fecha_nacimiento: ['', Validators.required],
       parentesco: ['', Validators.required],
-      tipoderegistro_id: [2, Validators.required]
-    });
-
-    this.pgestanteForm = this.formBuilder.group({
-      tipo_registro: ['Pgestante', Validators.required],
-      nombres: ['', Validators.required],
-      apellidos: ['', Validators.required],
-      semanas_embarazo_id: ['', Validators.required],
-      parentesco: ['', Validators.required],
-      fecha_nacimiento: ['', Validators.required],
-      tipoderegistro_id: [3, Validators.required]
+      tipoderegistro_id: [null, Validators.required]
     });
   }
 
@@ -64,11 +54,26 @@ export class MifamiliaPage implements OnInit {
 
   onTipoRegistroChange(event: any) {
     this.selectedOption = event.detail.value;
-    if (this.selectedOption === 1) { // Asumiendo que gestante tiene id 1
+    if (this.selectedOption === 1 && !this.isGestanteOptionUsed) {
       this.gestanteForm.patchValue({
+        tipo_registro: 'gestante',
         nombres: this.currentUser.nombres,
         apellidos: this.currentUser.apellidos,
-        fecha_nacimiento: this.currentUser.fecha_nacimiento
+        fecha_nacimiento: this.currentUser.fecha_nacimiento,
+        tipoderegistro_id: 1
+      });
+      this.isGestanteOptionUsed = true; // Marcar que la opción de gestante ha sido usada
+    } else if (this.selectedOption === 2) {
+      this.ninoForm.reset();
+      this.ninoForm.patchValue({
+        tipo_registro: 'nino',
+        tipoderegistro_id: 2
+      });
+    } else if (this.selectedOption === 3) {
+      this.gestanteForm.reset();
+      this.gestanteForm.patchValue({
+        tipo_registro: 'gestante',
+        tipoderegistro_id: 1
       });
     }
   }
@@ -77,6 +82,7 @@ export class MifamiliaPage implements OnInit {
     this.apiService.getFamilyMembers().subscribe(
       data => {
         this.familyMembers = data;
+        this.isGestanteOptionUsed = this.familyMembers.some(member => member.tipoderegistro_id === 1);
       },
       error => {
         console.error('Error al cargar miembros de la familia:', error);
@@ -119,10 +125,6 @@ export class MifamiliaPage implements OnInit {
         this.presentAlert('Error', 'Error al cargar datos del usuario: ' + error);
       }
     );
-  }
-
-  isGestanteOptionUsed(): boolean {
-    return this.familyMembers.some(member => member.tipoderegistro_id === 1);
   }
 
   async addOrUpdateFamilyMember(form: FormGroup) {
@@ -176,8 +178,6 @@ export class MifamiliaPage implements OnInit {
       this.gestanteForm.patchValue(member);
     } else if (member.tipoderegistro_id === 2) {
       this.ninoForm.patchValue(member);
-    } else if (member.tipoderegistro_id === 3) {
-      this.pgestanteForm.patchValue(member);
     }
   }
 
