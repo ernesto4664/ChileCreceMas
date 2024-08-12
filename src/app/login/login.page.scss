@@ -1,5 +1,5 @@
 ion-content {
-    --background: #9D6BE1;
+    --background: #00b6c499;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -30,7 +30,7 @@ ion-content {
   }
   
   ion-item {
-    --background: #B47FF8;
+    --background: #00b6c499;
     --color: #FFFFFF;
     --border-radius: 100px;
     padding-top: 5px;
@@ -43,7 +43,7 @@ ion-content {
   
   ion-button {
     margin-top: 10px;
-    --background: #B47FF8;
+    --background: rgba(5, 102, 139, 1);
     --border-radius: 100px;
   }
   

@@ -1,0 +1,113 @@
+/* General Styles */
+ion-header {
+  --background: #00BAC8;
+  --color: #fff;
+  border-bottom: 2px solid #00BAC8;
+}
+
+ion-toolbar {
+  --background: #00BAC8;
+}
+
+ion-title {
+  font-weight: bold;
+  font-size: 1.4rem;
+  text-align: center;
+}
+
+ion-content {
+  --background: #f4f4f4;
+  padding: 16px;
+}
+
+ion-card {
+  --background: #fff;
+  --box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  margin: 16px 0;
+}
+
+/* Header Styling */
+ion-card-header {
+  padding-bottom: 0;
+  border-bottom: 1px solid var(--ion-color-primary-tint);
+}
+
+ion-card-title {
+  font-size: 1.6rem;
+  font-weight: bold;
+  color: var(--ion-color-primary);
+  text-align: center;
+}
+
+/* Content Styling */
+ion-card-content {
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #333;
+}
+
+/* Image Styling */
+ion-img {
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+  overflow: hidden;
+  max-height: 200px;
+  object-fit: cover;
+}
+
+.beneficio-imagen img {
+  width: 100%;
+  border-radius: 12px 12px 0 0;
+  object-fit: cover;
+}
+
+/* Ion Item Styling */
+ion-item {
+  --background: transparent;
+  --inner-border-width: 0;
+  border: none;
+  padding-left: 0;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+ion-label {
+  font-weight: bold;
+  color: var(--ion-color-primary);
+  margin-bottom: 4px;
+}
+
+ion-note {
+  font-weight: normal;
+  color: #666;
+}
+
+ion-list {
+  padding: 0;
+}
+
+ion-item h3 {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin: 0;
+  color: #333;
+}
+
+ion-item p {
+  font-size: 0.9rem;
+  color: #666;
+  margin: 0;
+  line-height: 1.4;
+}
+
+/* Back Button Styling */
+ion-back-button {
+  --color: #fff;
+}
+
+/* Map Styles */
+ion-item iframe {
+  margin-top: 16px;
+  border-radius: 12px;
+}

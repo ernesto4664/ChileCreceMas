@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 })
 export class GuestHomePage implements OnInit {
   noticias: Noticia[] = [];
+  loopSwiper: boolean = true; // Variable to control Swiper looping
 
   constructor(private apiService: ApiService, private router: Router) {}
 
@@ -17,6 +18,8 @@ export class GuestHomePage implements OnInit {
     this.apiService.getNoticias().subscribe(
       (data: Noticia[]) => {
         this.noticias = data;
+        this.loopSwiper = this.noticias.length > 1; // Disable loop if only one news item
+        console.log('Noticias cargadas:', this.noticias);
       },
       (error) => {
         console.error('Error al obtener noticias:', error);

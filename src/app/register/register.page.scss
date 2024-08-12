@@ -2,7 +2,7 @@
 h1{
   font-weight: 700;
   font-size: 30px;
-  color: #656565;
+  color: rgba(42, 42, 42, 1);
 }
 
 ion-content {
@@ -22,9 +22,8 @@ ion-content {
 }
 
 ion-item {
-    --color: #656565;
-    --background: #EEEEEE;
-    --border-radius: 10px;
+    --color: rgba(42, 42, 42, 1);
+    --background: rgba(238, 238, 238, 1);
     margin-bottom: 15px;
   }
   
@@ -43,7 +42,7 @@ ion-item {
   }
   
   ion-button {
-    --background: #3EDAE6;
+    --background: rgba(5, 102, 139, 1);
     --border-radius: 100px;
   }
 

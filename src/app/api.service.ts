@@ -138,11 +138,13 @@ export class ApiService {
   getNoticias(): Observable<Noticia[]> {
     const url = `${this.baseUrl}/noticias`;
     return this.http.get<Noticia[]>(url).pipe(
-      map((noticias: Noticia[]) => noticias
-        .filter(noticia => noticia.status === 'Publicada')
-        .sort((a, b) => Number(a.privilegio) - Number(b.privilegio))
-        .slice(0, 5)
-      ),
+      map((noticias: Noticia[]) => {
+        console.log('Noticias recibidas:', noticias); // Para verificar qué se recibe antes del filtro
+        return noticias
+          .filter(noticia => noticia.status === 'Publicado') // Asegúrate de que coincide con 'Publicado'
+          .sort((a, b) => Number(a.privilegio) - Number(b.privilegio))
+          .slice(0, 5);
+      }),
       catchError(this.handleApiError)
     );
   }

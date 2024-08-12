@@ -11,13 +11,16 @@
     <div class="row">
       <div class="ion-col">
         <h1>Noticias destacadas</h1>
-        <p style="font-Weight:400; font-Size:14px; color:#656565; text-align: justify;">Aquí podrás visualizar la información de interés mas reciente que te
-           proporciona nuestro Sistema de Protección a la Infancia Chile Crece Más.</p>
+        <p style="font-weight: 400; font-size: 14px; color: #656565; text-align: justify;">
+          Aquí podrás visualizar la información de interés más reciente que te
+          proporciona nuestro Sistema de Protección a la Infancia Chile Crece Más.
+        </p>
       </div>
     </div>
   </div>
+
   <div class="swiper-container">
-    <swiper-container [loop]="true" class="mySwiper">
+    <swiper-container [loop]="loopSwiper" class="mySwiper">
       <swiper-slide *ngFor="let noticia of noticias">
         <ion-card>
           <img [src]="getFullImageUrl(noticia.imagen)" alt="{{noticia.titulo}}" class="noticia-image" />
@@ -26,7 +29,7 @@
           </ion-card-header>
           <ion-card-content>
             <p>{{ noticia.descripcion | slice:0:100 }}...</p>
-            <div class="container" style="text-align-last: center;">
+            <div class="container" style="text-align: center;">
               <div class="row">
                 <div class="col">
                   <ion-button (click)="verDetalles(noticia.idnoticia)">Ver detalles</ion-button>

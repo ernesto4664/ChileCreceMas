@@ -1,13 +1,51 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>beneficiosAll</ion-title>
+    <ion-title>Beneficios</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">beneficiosAll</ion-title>
+      <ion-title size="large">Beneficios</ion-title>
     </ion-toolbar>
   </ion-header>
+
+  <form [formGroup]="beneficiosForm">
+    <ion-list>
+      <ion-item>
+        <ion-label>Región</ion-label>
+        <ion-select formControlName="region" (ionChange)="onRegionChange($event)">
+          <ion-select-option *ngFor="let region of regiones" [value]="region.id">{{ region.nombre }}</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Comuna</ion-label>
+        <ion-select formControlName="comuna" [disabled]="!comunas.length" (ionChange)="onComunaChange($event)">
+          <ion-select-option *ngFor="let comuna of comunas" [value]="comuna.id">{{ comuna.nombre }}</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Tipo de Persona</ion-label>
+        <ion-select formControlName="tipoPersona" (ionChange)="onTipoPersonaChange($event)">
+          <ion-select-option value="1">Embarazada</ion-select-option>
+          <ion-select-option value="2">Niño</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-list>
+  </form>
+
+  <ion-list *ngIf="filteredBeneficios.length > 0">
+    <ion-item *ngFor="let beneficio of filteredBeneficios" (click)="goToDetalle(beneficio.id)">
+      <ion-label>
+        <h2>{{ beneficio.nombre }}</h2>
+        <p [innerHTML]="beneficio.descripcion"></p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+  <ion-item *ngIf="filteredBeneficios.length === 0 && beneficiosForm.dirty">
+    <ion-label>No se encontraron beneficios</ion-label>
+  </ion-item>
 </ion-content>

@@ -39,7 +39,7 @@
           <h2>{{ beneficio.nombre }}</h2>
           <p [innerHTML]="beneficio.descripcion"></p>
         </ion-label>
-        <ion-button >Ir al detalle</ion-button>
+        <ion-button (click)="goToDetalle(beneficio.id)" >Ir al detalle</ion-button>
       </ion-item>
     </ion-list>
   </div>

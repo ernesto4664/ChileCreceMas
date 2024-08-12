@@ -49,6 +49,14 @@ const routes: Routes = [
     loadChildren: () => import('./beneficios-user/beneficios-user.module').then( m => m.BeneficiosUserPageModule)
   },
   {
+    path: 'beneficio-detalle/:id',
+    loadChildren: () => import('./beneficio-detalle/beneficio-detalle.module').then( m => m.BeneficioDetallePageModule)
+  },
+  {
+    path: 'beneficio-detalle-user/:id',
+    loadChildren: () => import('./beneficio-detalle-user/beneficio-detalle-user.module').then( m => m.BeneficioDetalleUserPageModule)
+  },
+  {
     path: '**',
     redirectTo: 'welcome',
     pathMatch: 'full'

@@ -57,9 +57,9 @@ export class AppComponent implements OnInit {
       this.showHeader = false;
       this.pageTitle = 'BIENVENIDOS';
       this.showBackButton = false;
-    } else if (url.includes('choice')) {
-      this.showHeader = false;
-      this.pageTitle = 'Elige una Opción';
+    } else if (url.includes('mifamilia')) {
+      this.showHeader = true;
+      this.pageTitle = 'Mi familia';
       this.showBackButton = true;
     } else if (url.includes('login')) {
       this.showHeader = true;
@@ -85,11 +85,19 @@ export class AppComponent implements OnInit {
       this.showHeader = true;
       this.pageTitle = 'Contacto';
       this.showBackButton = true;
-    } else if (url.includes('terminos-condiciones')) {
+    } else if (url.includes('beneficio-detalle')) {
       this.showHeader = true;
-      this.pageTitle = 'Términos y Condiciones';
+      this.pageTitle = 'Beneficio detalle';
       this.showBackButton = true;
-    } else {
+    } else if (url.includes('beneficios-all')) {
+      this.showHeader = true;
+      this.pageTitle = 'Beneficios';
+      this.showBackButton = true;
+    }else if (url.includes('beneficios-user')) {
+      this.showHeader = true;
+      this.pageTitle = 'Beneficios';
+      this.showBackButton = true;
+    }else {
       this.showHeader = true;
       this.pageTitle = 'ChileCreceMas';
       this.showBackButton = false;

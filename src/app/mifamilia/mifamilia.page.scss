@@ -1,7 +1,7 @@
 h1{
   font-weight: 700;
   font-size: 30px;
-  color: #656565;
+  color: rgba(42, 42, 42, 1);
 }
 
 p{
@@ -36,10 +36,10 @@ ion-label {
 .mibtn {
   flex: 1;
   margin: 0 5px;
-  color: #656565; /* Cambia esto al color de texto que desees */
-  --border: 1px solid #656565;
+  color: rgba(255, 255, 255, 1); /* Cambia esto al color de texto que desees */
+  --border: 1px solid rgba(5, 102, 139, 1);
   --border-radius: 100px; /* Cambia esto para redondear los bordes */
-  --background: #FFFFFF; /* Asegúrate de que el color de fondo sea consistente */
+  --background: rgba(5, 102, 139, 1);
 }
 
 .mibtn:hover {
@@ -82,11 +82,11 @@ ion-label {
   ion-accordion-group {
     ion-accordion {
       ion-item[slot="header"] {
-        background-color: #3EDAE6; // Color de fondo deseado
-        color: white; // Color de la fuente
+        background-color: rgba(241, 143, 1, 0.2); // Color de fondo deseado
+        color:  rgba(42, 42, 42, 1); // Color de la fuente
         width: 100%;
-        --background: #3EDAE6; // Fondo del ion-item
-        --color: white; // Color de la fuente del ion-item
+        --background: rgba(241, 143, 1, 0.2); // Fondo del ion-item
+        --color: rgba(42, 42, 42, 1); // Color de la fuente del ion-item
       }
     }
   }

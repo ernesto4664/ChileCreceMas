@@ -1,0 +1,58 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ beneficio?.nombre }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-card *ngIf="beneficio">
+    <div class="beneficio-imagen">
+      <img [src]="getFullImageUrl(beneficio.imagen)" alt="{{ beneficio.nombre }}">
+    </div>
+    <ion-card-header>
+      <ion-card-title>{{ beneficio.nombre }}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-item>
+        <ion-label position="stacked">De qué se trata?</ion-label>
+        <p style="padding-top: 5px;" [innerHTML]="beneficio.descripcion"></p>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Tipo de Beneficio</ion-label>
+        <ion-note>{{ beneficio.tipo_beneficio }}</ion-note>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Requisitos</ion-label>
+        <p style="padding-top: 5px;" [innerHTML]="beneficio.requisitos"></p>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Vigencia</ion-label>
+        <ion-note>{{ beneficio.vigencia }}</ion-note>
+      </ion-item>
+      <ion-item *ngIf="filteredUbicaciones.length > 0">
+        <ion-label position="stacked">Ubicaciones</ion-label>
+        <ion-list>
+          <ion-item *ngFor="let ubicacion of filteredUbicaciones">
+            <ion-label style="padding-top: 5px;" position="stacked">Nombre establecimiento</ion-label>
+            <h3 style="padding-top: 5px;">{{ ubicacion.nombre_establecimiento }}</h3>
+            <ion-label position="stacked">Dirección</ion-label>
+            <p style="padding-top: 5px;">{{ ubicacion.direccion }}</p>
+            <ion-label position="stacked">Contacto</ion-label>
+            <p style="padding-top: 5px;">{{ ubicacion.contacto }}</p>
+          </ion-item>
+        </ion-list>
+      </ion-item>
+      <ion-item *ngIf="filteredUbicaciones.length === 0">
+        <ion-label>No hay ubicaciones disponibles para los criterios seleccionados.</ion-label>
+      </ion-item>
+
+      <!-- Incluir el iframe de Google Maps -->
+      <ion-item *ngIf="googleMapsUrl">
+        <iframe [src]="googleMapsUrl" width="100%" height="300" frameborder="0" style="border:0;" allowfullscreen></iframe>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

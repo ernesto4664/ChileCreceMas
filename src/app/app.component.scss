@@ -14,7 +14,7 @@
   right: 0;
   width: 250px;
   height: 100%;
-  background:  #9D6BE1;  // Fondo blanco sólido
+  background:  #00BAC8;  
   z-index: 20;
   padding: 20px;
   box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
@@ -30,7 +30,7 @@
   display: flex;
   align-items: center;
   padding: 10px;
-  background: #9D6BE1;  // Fondo blanco sólido para las columnas
+  background: #00BAC8;  
 }
 
 .icon-col img {
@@ -44,7 +44,7 @@ ion-label {
 }
 
 ion-grid, ion-row, ion-col {
-  background: #9D6BE1;  // Fondo blanco sólido para estos elementos
+  background: #00BAC8;  
 }
 
 ion-header {
@@ -52,7 +52,7 @@ ion-header {
 }
 
 ion-toolbar {
-  --background: #6725c1;
+  --background: #00BAC8;
   color: white !important;
   position: relative;  // Para permitir la posición absoluta de los elementos hijos
 }

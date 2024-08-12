@@ -28,6 +28,18 @@
     </div>
     <ion-grid>
       <ion-row>
+        <ion-col *ngIf="!isLoggedIn" size="12" class="icon-col" (click)="navigateToLogin()">
+          <!--<img src="assets/img/logout.png" alt="Iniciar Sesión" width="35px" height="35px">-->
+           <ion-label style="background: rgba(5, 102, 139, 1);
+           padding: 10px 15px;
+           border-radius: 100px;"><strong>Iniciar Sesión</strong></ion-label>
+         </ion-col>
+         <ion-col *ngIf="isLoggedIn" size="12" class="icon-col" (click)="logout()">
+          <!--<img src="assets/img/logout.png" alt="Cerrar Sesión" width="35px" height="35px">-->
+           <ion-label style="background: rgba(5, 102, 139, 1);
+           padding: 10px 15px;
+           border-radius: 100px;"><strong>Cerrar Sesión</strong></ion-label>
+         </ion-col>
         <ion-col *ngIf="isLoggedIn" size="12" class="icon-col" (click)="navigateTohome()">
           <img src="assets/img/home.png" alt="Inicio" width="35px" height="28px">
           <ion-label style="margin-top: 8px;">Inicio</ion-label>
@@ -51,18 +63,6 @@
         <ion-col *ngIf="isLoggedIn" size="12" class="icon-col" (click)="navigateTomifamilia()">
           <img src="assets/img/familia.png" alt="Familia" width="40px" height="27px">
           <ion-label><strong>Mi Familia</strong></ion-label>
-        </ion-col>
-        <ion-col *ngIf="isLoggedIn" size="12" class="icon-col" (click)="logout()">
-         <!--<img src="assets/img/logout.png" alt="Cerrar Sesión" width="35px" height="35px">-->
-          <ion-label style="background: #3EDAE6;
-          padding: 10px 15px;
-          border-radius: 100px;"><strong>Cerrar Sesión</strong></ion-label>
-        </ion-col>
-        <ion-col *ngIf="!isLoggedIn" size="12" class="icon-col" (click)="navigateToLogin()">
-         <!--<img src="assets/img/logout.png" alt="Iniciar Sesión" width="35px" height="35px">-->
-          <ion-label style="background: #3EDAE6;
-          padding: 10px 15px;
-          border-radius: 100px;"><strong>Iniciar Sesión</strong></ion-label>
         </ion-col>
       </ion-row>
     </ion-grid>

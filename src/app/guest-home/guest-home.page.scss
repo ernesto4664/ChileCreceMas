@@ -1,7 +1,7 @@
 h1{
     font-Weight: 700;
     font-Size: 30px;
-    color: #656565;
+    color: rgba(42, 42, 42, 1);
 }
 /* Estilos generales para el contenedor del slider */
 .swiper-container {
@@ -37,18 +37,18 @@ h1{
 .ion-card-content {
   text-align: justify;
   font-size: 14px;
-  color: #656565;
+  color: rgba(42, 42, 42, 1);
 }
 
 .ion-card-title {
   font-weight: 500;
   font-size: 18px;
-  color: #333;
+  color: rgba(42, 42, 42, 1);
 }
 
 /* Opcional: Estilos para el botón */
 ion-button {
-  --background: #3EDAE6;
+  --background: rgba(5, 102, 139, 1);
   --border-radius: 100px;
   margin-top: 10px;
 
